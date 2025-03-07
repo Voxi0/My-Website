@@ -1,0 +1,19 @@
+---
+// This component checks if the user is on the current page and adds an active class so we can style it
+
+// Astro
+import type { HTMLAttributes } from "astro/types";
+
+// Attributes - Used to pass data from where it"s used
+type Props = HTMLAttributes<"a">;
+const { href, class: className, ...props } = Astro.props;
+
+// Figure out what the current page is to figure out if the link is active or not
+const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, "");
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
+---
+<a href={href} class:list={[className, { active: isActive }]} {...props}>
+	<!-- Anchor tag text -->
+	<slot/>
+</a>
