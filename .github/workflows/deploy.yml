@@ -25,8 +25,8 @@ jobs:
         uses: actions/checkout@v4
 
       # Set up Bun
-      - name: Setup Bun
-        run: curl -fsSL https://bun.sh/install | bash
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
 
       # Install dependencies and build the site
       - name: Install Dependencies
