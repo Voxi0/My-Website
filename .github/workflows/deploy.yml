@@ -24,18 +24,15 @@ jobs:
       - name: Clone Repository
         uses: actions/checkout@v4
 
-      # Set up NodeJS
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: npm
+      # Set up Bun
+      - name: Setup Bun
+        run: curl -fsSL https://bun.sh/install | bash
 
-      # Install all dependencies and build the site
+      # Install dependencies and build the site
       - name: Install Dependencies
-        run: npm install
+        run: bun install
       - name: Build Site
-        run: npm run build
+        run: bun build
 
       # Store the build ouput and make it available on Github Pages
       - name: Upload Pages Artifact
