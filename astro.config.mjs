@@ -8,7 +8,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // Astro configuration
 export default defineConfig({
-  site: "https://voxi0.netlify.app/",
+  site: "https://voxi0.github.io/",
   integrations: [ mdx(), sitemap() ],
   vite: {
     plugins: [ tailwindcss() ],
