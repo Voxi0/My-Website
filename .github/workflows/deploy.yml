@@ -1,0 +1,46 @@
+# Workflow name
+name: Deploy Site
+
+# When to run the workflow
+on:
+  # Run the workflow on push to the main branch
+  push:
+    branches: [ main ]
+
+  # Allows manual triggering from GitHub Actions UI
+  workflow_dispatch:
+
+# Workflow permissions
+permissions:
+  pages: write
+  id-token: write
+
+# Workflow actions
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Clone the repository
+      - name: Clone Repository
+        uses: actions/checkout@v4
+
+      # Set up NodeJS
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      # Install all dependencies and build the site
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Site
+        run: npm run build
+
+      # Store the build ouput and make it available on Github Pages
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

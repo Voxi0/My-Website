@@ -6,7 +6,6 @@
 	themes: caramellatte --default, night --prefersdark;
 	root: ":root";
 	prefix: "";
-	include: button;
 	logs: true;
 }
 
