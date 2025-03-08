@@ -32,7 +32,7 @@ jobs:
       - name: Install Dependencies
         run: bun install
       - name: Build Site
-        run: bun build
+        run: bun run build
 
       # Store the build ouput and make it available on Github Pages
       - name: Upload Pages Artifact
