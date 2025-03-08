@@ -2,17 +2,29 @@
 import Link from "./Link.astro";
 
 // Constants
-import { SITE_TITLE } from "../consts";
+import { USERNAME } from "../consts";
 ---
 <header>
 	<!-- Navigation bar -->
-	<nav class="flex justify-between items-center pt-2 pb-2 pl-4 pr-4">
-		<h2>
-			<a href="/">{SITE_TITLE}</a>
-		</h2>
-		<div>
-			<Link href="/">Home</Link>
-			<Link href="/blog">Blog</Link>
+	<nav class="glass border-solid border-2 rounded-box flex justify-around items-center p-1">
+		<!-- Profile -->
+		<a href="/">
+			<div class="flex items-center">
+				<!-- Profile image -->
+				<img class="w-12 h-12 rounded-full" src="/pfp.png" alt="My profile picture">
+
+				<!-- Name and pronouns -->
+				<div class="pl-2">
+					<h2 class="text-md font-bold">{USERNAME}</h2>
+					<h3 class="text-xs">he/him</h3>
+				</div>
+			</div>
+		</a>
+
+		<!-- Navigation links -->
+		<div class="space-x-1 pr-4">
+			<Link class="decoration-2 hover:underline hover:text-accent" href="/">Home</Link>
+			<Link class="decoration-2 hover:underline hover:text-accent" href="/blog">Blog</Link>
 		</div>
 	</nav>
 </header>
